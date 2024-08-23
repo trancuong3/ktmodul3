@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PhongTroDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/quan_ly_thue_phong_tro?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3307/quan_ly_thue_phong_tro?useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "trancuong365421";
+    private String jdbcPassword = "";
     protected Connection getConnection() {
         Connection connection = null;
         try {
@@ -31,7 +31,7 @@ public class PhongTroDAO {
                 phongTro.setTenNguoiThue(rs.getString("ten_nguoi_thue"));
                 phongTro.setSoDienThoai(rs.getString("so_dien_thoai"));
                 phongTro.setNgayBatDau(rs.getString("ngay_bat_dau"));
-                phongTro.setHinhThucThanhToanId(rs.getInt("hinh_thuc_thanh_toan_id"));
+                phongTro.setHinhThucThanhToanId(rs.getString("hinh_thuc_thanh_toan_id"));
                 phongTro.setGhiChu(rs.getString("ghi_chu"));
                 phongTros.add(phongTro);
             }
@@ -42,12 +42,13 @@ public class PhongTroDAO {
     public void addPhongTro(PhongTro phongTro) throws SQLException {
         String sql = "INSERT INTO phong_tro (ma_phong_tro, ten_nguoi_thue, so_dien_thoai, ngay_bat_dau, hinh_thuc_thanh_toan_id, ghi_chu) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, phongTro.getMaPhongTro());
+            ps.setString(1, null);
             ps.setString(2, phongTro.getTenNguoiThue());
             ps.setString(3, phongTro.getSoDienThoai());
             ps.setString(4, phongTro.getNgayBatDau());
-            ps.setInt(5, phongTro.getHinhThucThanhToanId());
+            ps.setString(5, phongTro.getHinhThucThanhToanId());
             ps.setString(6, phongTro.getGhiChu());
+            System.out.println(phongTro.getHinhThucThanhToanId());
             ps.executeUpdate();
         }
     }
@@ -74,7 +75,7 @@ public class PhongTroDAO {
                 phongTro.setTenNguoiThue(rs.getString("ten_nguoi_thue"));
                 phongTro.setSoDienThoai(rs.getString("so_dien_thoai"));
                 phongTro.setNgayBatDau(rs.getString("ngay_bat_dau"));
-                phongTro.setHinhThucThanhToanId(rs.getInt("hinh_thuc_thanh_toan_id"));
+                phongTro.setHinhThucThanhToanId(rs.getString("hinh_thuc_thanh_toan_id"));
                 phongTro.setGhiChu(rs.getString("ghi_chu"));
                 phongTros.add(phongTro);
             }

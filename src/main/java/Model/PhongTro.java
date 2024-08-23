@@ -6,7 +6,7 @@ public class PhongTro {
     private String tenNguoiThue;
     private String soDienThoai;
     private String ngayBatDau;
-    private int hinhThucThanhToanId;
+    private String hinhThucThanhToanId;
     private String ghiChu;
 
     public int getId() {
@@ -49,11 +49,11 @@ public class PhongTro {
         this.ngayBatDau = ngayBatDau;
     }
 
-    public int getHinhThucThanhToanId() {
+    public String getHinhThucThanhToanId() {
         return hinhThucThanhToanId;
     }
 
-    public void setHinhThucThanhToanId(int hinhThucThanhToanId) {
+    public void setHinhThucThanhToanId(String hinhThucThanhToanId) {
         this.hinhThucThanhToanId = hinhThucThanhToanId;
     }
 

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact name="unnamed">
-    <output-path>$PROJECT_DIR$/out/artifacts/unnamed</output-path>
-    <root id="root" />
+  <artifact type="war" build-on-make="true" name="unnamed">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="ktmodul.war" />
   </artifact>
 </component>

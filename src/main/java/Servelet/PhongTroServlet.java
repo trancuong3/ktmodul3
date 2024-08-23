@@ -16,8 +16,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @WebServlet(name = "PhongTroServlet", urlPatterns = {"/phong-tro/*"})
-
-
 public class PhongTroServlet extends HttpServlet {
     private PhongTroDAO phongTroDAO;
 
@@ -65,7 +63,15 @@ public class PhongTroServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+//        doGet(request, response);
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        try {
+            insertPhongTro(request,response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void listPhongTro(HttpServletRequest request, HttpServletResponse response)
@@ -93,15 +99,18 @@ public class PhongTroServlet extends HttpServlet {
 
     private void insertPhongTro(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
-        String maPhongTro = request.getParameter("maPhongTro");
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+//        String maPhongTro = request.getParameter("maPhongTro");
         String tenNguoiThue = request.getParameter("tenNguoiThue");
         String soDienThoai = request.getParameter("soDienThoai");
         String ngayBatDau = request.getParameter("ngayBatDau");
-        int hinhThucThanhToanId = Integer.parseInt(request.getParameter("hinhThucThanhToanId"));
+        String hinhThucThanhToanId = request.getParameter("hinhThucThanhToanId");
         String ghiChu = request.getParameter("ghiChu");
 
         PhongTro newPhongTro = new PhongTro();
-        newPhongTro.setMaPhongTro(maPhongTro);
+//        newPhongTro.setMaPhongTro(maPhongTro);
         newPhongTro.setTenNguoiThue(tenNguoiThue);
         newPhongTro.setSoDienThoai(soDienThoai);
         newPhongTro.setNgayBatDau(ngayBatDau);
@@ -122,6 +131,6 @@ public class PhongTroServlet extends HttpServlet {
 
             phongTroDAO.deletePhongTros(idList);
         }
-        response.sendRedirect("/phong-tro");
+        response.sendRedirect("phong-tro");
     }
 }
