@@ -40,7 +40,7 @@
             <input type="date" id="ngayBatDau" name="ngayBatDau" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="hinhThucThanhToanId">Hình thức thanh toán111login:</label>
+            <label for="hinhThucThanhToanId">Hình thức thanh toán111login2222:</label>
             <select id="hinhThucThanhToanId" name="hinhThucThanhToanId" class="form-control" required>
                 <option value="1">Theo tháng</option>
                 <option value="2">Theo quý</option>
